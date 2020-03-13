@@ -23,13 +23,19 @@ func TestDecode(t *testing.T) {
 			name: "should return an error if the input has the wrong format length",
 			data: []byte("A0511AB3"),
 			want: map[string]string{},
-			err:  decoder.ErrInvalidFormat{},
+			err:  decoder.ErrInvalidLength{},
 		},
 		{
 			name: "should return an error if the input has the wrong format type",
 			data: []byte("N0503AB3"),
 			want: map[string]string{},
-			err:  decoder.ErrInvalidFormat{},
+			err:  decoder.ErrInvalidType{},
+		},
+		{
+			name: "should return an error if the type is unknown",
+			data: []byte("B0511AB398765UJ1"),
+			want: map[string]string{},
+			err:  decoder.ErrInvalidType{},
 		},
 		{
 			name: "should return an error if the length is not an integer",

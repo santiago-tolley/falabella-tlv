@@ -23,6 +23,9 @@ func Decode(input []byte) (map[string]string, error) {
 
 		// Extract Type from TLV and convert it to String
 		dataType := string(input[i])
+		if dataType != "N" && dataType != "A" {
+			return map[string]string{}, ErrInvalidType{}
+		}
 
 		// Extract Length from TLV and convert it to Int
 		length, err := strconv.Atoi(string(input[i+3 : i+5]))
@@ -32,7 +35,7 @@ func Decode(input []byte) (map[string]string, error) {
 
 		// Check if value length does not exceed input length
 		if i+length+HEADER_LENGTH > len(input) {
-			return map[string]string{}, ErrInvalidFormat{}
+			return map[string]string{}, ErrInvalidLength{}
 		}
 
 		// Extract Value from TLV
@@ -42,7 +45,7 @@ func Decode(input []byte) (map[string]string, error) {
 		if dataType == "N" {
 			_, err := strconv.Atoi(value)
 			if err != nil {
-				return map[string]string{}, ErrInvalidFormat{}
+				return map[string]string{}, ErrInvalidType{}
 			}
 		}
 

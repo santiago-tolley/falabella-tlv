@@ -6,8 +6,8 @@ The map contains the fields indexed by the order in which they were found.
 
 For example entering `A0511AB398765UJ1N230200` will result in a map containing:
 ```
-0: A0511AB398765UJ1
-1: N230200
+"0": "A0511AB398765UJ1"
+"1": "N230200"
 ```
 
 ## Initializing the project
