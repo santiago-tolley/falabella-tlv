@@ -27,9 +27,9 @@ decode		-> decode entered TLV fields into a map
 help		-> shows this list of commands
 exit 		-> to exit
 ```
-Entering `decode` will allow the use to enter TLV fields and will show the resulting map.
+Entering `decode` will allow the user to enter TLV fields and will show the resulting map.
 
-The `help` command shows a list of possible commands.
+The `help` command shows the list of commands.
 
 To close the program enter `exit`.
 
